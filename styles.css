@@ -11,7 +11,7 @@ html, body {
     height: 100%;
 }
 
-#code {
+body {
     background-color: #333;
     color: #10f010;
     width: 100%;

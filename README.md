@@ -1,3 +1,3 @@
 # HACKER TYPER
 
-Choose a file and your file will be typed
+Choose a file and hit space

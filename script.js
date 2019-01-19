@@ -1,4 +1,4 @@
-if (window.File && window.FileReader && window.FileList && window.Blob) {
+if (window.File && window.FileReader) {
     const code = document.querySelector("body");
     function handleFileSelect(e) {
         code.innerHTML = '';

@@ -1,16 +1,19 @@
 if (window.File && window.FileReader) {
+
     const code = document.querySelector("body");
+
     function handleFileSelect(e) {
         code.innerHTML = '';
         const file = e.target.files[0];
 
         if (file) {
-            code.addEventListener("keypress", (e) => {
+            const start = (e) => {
                 if (e.keyCode === 32) {
+                    code.removeEventListener("keypress", start);
                     const reader = new FileReader();
                     reader.readAsText(file, "UTF-8");
 
-                    reader.onload = function (e) {
+                    reader.onload = (e) => {
                         const string = e.target.result;
                         
                         let i = 0;
@@ -28,15 +31,17 @@ if (window.File && window.FileReader) {
                             else
                                 code.innerHTML += string[i];
 
+                            window.scrollTo(0, code.clientHeight);
                             i++;
-                        }, 30);
+                        }, 25);
                     }
 
-                    reader.onerror = function (e) {
+                    reader.onerror = (e) => {
                         console.log("error reading file");
                     }
                 }
-            })
+            }
+            code.addEventListener("keypress", start);
         }
     }
     document.getElementById('files').addEventListener('change', handleFileSelect, false);
